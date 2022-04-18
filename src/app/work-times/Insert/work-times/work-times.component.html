@@ -1,0 +1,55 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="row form-group">
+        <label for="date">Enter Date</label>
+        <input formControlName="date" type="date">
+        <div>
+            <span *ngIf="!myForm.get('date').valid && myForm.get('date').touched">Please Enter a Correct Date</span>
+        </div>
+    </div>
+    
+    <div class="row form-group">
+        <label for="association">Association</label>
+        <input type="text" hint="This is a label to pair all associated days into a week" formControlName="association">
+        <div>
+            <div>
+                <span *ngIf="!myForm.get('association').valid && myForm.get('association').touched">Please Enter an Association</span>
+            </div>
+         </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="start">Start time</label>
+        <input type="time" formControlName="start">
+        <div >
+            <div class="row" *ngIf="myForm.get('start').errors">
+             <span *ngIf="myForm.get('start').errors['validateTime']">Please Enter Start Time earlier than finish time</span>
+            </div>
+             <span *ngIf="!myForm.get('start').valid && myForm.get('start').touched">Please Enter a time</span>
+         </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="finish">Enter Finishing Time</label>
+        <input type="time" formControlName="finish">
+        <div >
+           <div class="row" *ngIf="myForm.get('finish').errors">
+            <span *ngIf="myForm.get('finish').errors['validateTime']">Please Enter Finishing Time later than start time</span>
+           </div>
+            <span *ngIf="!myForm.get('finish').valid && myForm.get('finish').touched">Please Enter a time</span>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="description">Enter Some Details</label>
+        <input type="text" formControlName="description">
+        <div>
+            <span *ngIf="!myForm.get('description').valid && myForm.get('description').touched">Please Enter some details</span>
+        </div>
+    </div>
+
+
+    <button class="btn-outline-danger" 
+            type="submit"
+            [disabled]="isValid()">Hit Me</button>
+</form>
+

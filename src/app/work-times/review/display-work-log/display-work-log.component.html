@@ -1,0 +1,22 @@
+<p>display-work-log works!</p>
+
+<div class="container">
+    <table class="table table-stripe" >
+        <tr>
+            <th>day</th>
+            <th>date</th>
+            <th>start time</th>
+            <th>finish time</th>
+            <th>description</th>
+            <th>total time</th>
+        </tr>
+        <tr *ngFor="let log of logs  ">
+            <td>{{log.date | date:'EEEE'}} </td>
+            <td>{{log.date | date}}</td>
+            <td>{{log.start}}</td>
+            <td>{{log.finish}}</td>
+            <td>{{log.description}}</td>
+            <td>{{log.totalTime}}</td>
+        </tr>
+    </table>
+</div>
